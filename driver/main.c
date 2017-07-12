@@ -26,7 +26,7 @@
 
 #include <taihen.h>
 
-#define MOUNT_POINT_ID 0x800
+#define MOUNT_POINT_ID 0xF00 //Uma0 Mount Point
 
 int module_get_offset(SceUID pid, SceUID modid, int segidx, size_t offset, uintptr_t *addr);
 
@@ -54,8 +54,8 @@ typedef struct {
 	int unk6;
 	int unk7;
 } SceIoMountPoint;
-
-static SceIoDevice uma_ux0_dev = { "ux0:", "exfatux0", "sdstor0:gcd-lp-ign-entire", "sdstor0:gcd-lp-ign-entire", MOUNT_POINT_ID };
+//Note: uma_ux0_dev will be changed to uma_uma0_dev, not really important but it will affect future coding.
+static SceIoDevice uma_ux0_dev = { "uma0:", "exfatux0", "sdstor0:gcd-lp-ign-entire", "sdstor0:gcd-lp-ign-entire", MOUNT_POINT_ID }; //Changed from ux0: to uma0:
 
 static SceIoMountPoint *(* sceIoFindMountPoint)(int id) = NULL;
 
